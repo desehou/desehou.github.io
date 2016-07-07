@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://desehou.me/"/>
-  <updated>2016-07-05T03:02:17.000Z</updated>
+  <updated>2016-07-07T08:03:28.000Z</updated>
   <id>http://desehou.me/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo博客搭建遇到的坑</title>
+    <link href="http://desehou.me/2016/07/07/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"/>
+    <id>http://desehou.me/2016/07/07/hexo博客搭建遇到的坑/</id>
+    <published>2016-07-07T07:42:15.000Z</published>
+    <updated>2016-07-07T08:03:28.000Z</updated>
+    
+    <content type="html">&lt;p&gt;   之前自己的博客在CSDN，已经好久没有更新维护，最近项目告一段落，打算在github上搭建一个技术博客，查了很多资料，选中了hexo，经过一下午的折腾终于成功，第一篇文章就总结下自己搭建hexo过程中遇到的坑吧。&lt;/p&gt;
+&lt;p&gt;坑1：hexo不能push到github上&lt;br&gt;    hexo安装资料：&lt;br&gt;    &lt;a href=&quot;http://www.jianshu.com/p/465830080ea9&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/465830080ea9&lt;/a&gt;&lt;br&gt;    自己按照上述资料安装，发现死活不能deploy到github，折腾了好久，甚至重新删除安装还是不行，后来发现原因，原来是type参数和值中间必须要有空格，而那个教程中却是没有空格的，并且hexo的官方文档里着重强调必须要注意空格问题。看来是自己不仔细看官方文档的后果。&lt;br&gt;     type: git&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;repo: https://github.com/leopardpan/leopardpan.github.io.git
+
+branch: master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;坑2：注意站点_config.yml和theme _config.yml&lt;br&gt;    hexo部署成功，自己感觉主题太丑了，想换个主题，换了主题之后不管自己如何设置头像就是不能设置成功，后来发现原因，有的主题换头像实在站点的_config.yml中添加avatar字段和头像地址，而有的头像则是在主题目录下的_config.yml中进行配置，这点一定要注意，仔细查看所用主题的文档说明。&lt;br&gt;坑3: 自己的域名指向github.io不成功&lt;br&gt;     自己在修改过_config.yml之后，会执行hexo c，hexo g,hexo d命令，导致原本在github上的CNAME文件被删除，域名指向不成功。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   之前自己的博客在CSDN，已经好久没有更新维护，最近项目告一段落，打算在github上搭建一个技术博客，查了很多资料，选中了hexo，经过一下午的折腾终于成功，第一篇文章就总结下自己搭建hexo过程中遇到的坑吧。&lt;/p&gt;
+&lt;p&gt;坑1：hexo不能push到github
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

@@ -240,6 +240,105 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/07/hexo博客搭建遇到的坑/" itemprop="url">
+                  hexo博客搭建遇到的坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-07T15:42:15+08:00" content="2016-07-07">
+              2016-07-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>   之前自己的博客在CSDN，已经好久没有更新维护，最近项目告一段落，打算在github上搭建一个技术博客，查了很多资料，选中了hexo，经过一下午的折腾终于成功，第一篇文章就总结下自己搭建hexo过程中遇到的坑吧。</p>
+<p>坑1：hexo不能push到github上<br>    hexo安装资料：<br>    <a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">http://www.jianshu.com/p/465830080ea9</a><br>    自己按照上述资料安装，发现死活不能deploy到github，折腾了好久，甚至重新删除安装还是不行，后来发现原因，原来是type参数和值中间必须要有空格，而那个教程中却是没有空格的，并且hexo的官方文档里着重强调必须要注意空格问题。看来是自己不仔细看官方文档的后果。<br>     type: git</p>
+<pre><code>repo: https://github.com/leopardpan/leopardpan.github.io.git
+
+branch: master
+</code></pre><p>坑2：注意站点_config.yml和theme _config.yml<br>    hexo部署成功，自己感觉主题太丑了，想换个主题，换了主题之后不管自己如何设置头像就是不能设置成功，后来发现原因，有的主题换头像实在站点的_config.yml中添加avatar字段和头像地址，而有的头像则是在主题目录下的_config.yml中进行配置，这点一定要注意，仔细查看所用主题的文档说明。<br>坑3: 自己的域名指向github.io不成功<br>     自己在修改过_config.yml之后，会执行hexo c，hexo g,hexo d命令，导致原本在github上的CNAME文件被删除，域名指向不成功。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/05/hello-world/" itemprop="url">
                   Hello World
                 </a>
@@ -362,7 +461,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
