@@ -96,7 +96,7 @@
 <meta property="og:description" content="项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
   是被谁截断了呢？
   我开">
-<meta property="og:updated_time" content="2016-07-08T02:08:38.000Z">
+<meta property="og:updated_time" content="2016-07-08T03:15:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx接口数据返回的坑">
 <meta name="twitter:description" content="项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
@@ -287,10 +287,12 @@
         <pre><code>项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
   是被谁截断了呢？
   我开始怀疑是afnetworking框架截断了，网上查了一通，也没找到原因。偶然在打断点的过程中看到了nginx字样，瞬间怀疑nginx截断了数据。google一下发现大量数据过长被nginx截断的文章。
-fastcgi_buffers 256 128k;
-chunked_transfer_encoding off;
-这么两句话就可以了，是因为fastcgi_buffers设置的太小造成的。
-</code></pre>
+  fastcgi_buffers      8 4K;
+  fastcgi_buffer_size  4K;
+</code></pre><p>fastcgi_buffers 控制 nginx 最多创建 8 个大小为 4K 的缓冲区，而 fastcgi_buffer_size 则是处理 Response 时第一个缓冲区的大小，不包含在前者中。所以总计能创建的最大内存缓冲区大小是 8<em>4K+4K = 36k。而这些缓冲区是根据实际的 Response 大小动态生成的，并不是一次性创建的。比如一个 8K 的页面，Nginx 会创建 2</em>4K 共 2 个 buffers。</p>
+<p>当 Response 小于等于 36k 时，所有数据当然全部在内存中处理。如果 Response 大于 36k 呢？fastcgi_temp 的作用就在于此。多出来的数据会被临时写入到文件中，放在这个目录下面。</p>
+<p>内存中缓冲了 36Kb，剩下的会写入的文件中。而实际的情况是，运行 Nginx Process 的用户并没有 fastcgi_temp 目录的写权限，于是剩下的数据就丢失掉了。<br>   所以nginx要给这个目录的读写权限，并且将nginx改为root用户。<br>   重新请求正常。</p>
+
       
     </div>
 
