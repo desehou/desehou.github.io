@@ -86,15 +86,22 @@
 
 
 
-<meta name="description" content="记录技术开发中遇到的坑!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="得瑟侯">
-<meta property="og:url" content="http://desehou.me/archives/2016/07/index.html">
+<meta name="description" content="项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
+  是被谁截断了呢？
+  我开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx接口数据返回的坑">
+<meta property="og:url" content="http://desehou.me/2016/07/08/nginx接口数据返回的坑/index.html">
 <meta property="og:site_name" content="得瑟侯">
-<meta property="og:description" content="记录技术开发中遇到的坑!">
+<meta property="og:description" content="项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
+  是被谁截断了呢？
+  我开">
+<meta property="og:updated_time" content="2016-07-08T02:08:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="得瑟侯">
-<meta name="twitter:description" content="记录技术开发中遇到的坑!">
+<meta name="twitter:title" content="nginx接口数据返回的坑">
+<meta name="twitter:description" content="项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
+  是被谁截断了呢？
+  我开">
 
 
 
@@ -115,9 +122,9 @@
 
 
 
-  <link rel="canonical" href="http://desehou.me/archives/2016/07/"/>
+  <link rel="canonical" href="http://desehou.me/2016/07/08/nginx接口数据返回的坑/"/>
 
-  <title> 归档 | 得瑟侯 </title>
+  <title> nginx接口数据返回的坑 | 得瑟侯 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +145,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -216,103 +223,121 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 2 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/08/nginx接口数据返回的坑/" itemprop="url">
-              
-                <span itemprop="name">nginx接口数据返回的坑</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-08T09:36:54+08:00"
-              content="2016-07-08" >
-          07-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/07/hexo博客搭建遇到的坑/" itemprop="url">
-              
-                <span itemprop="name">hexo博客搭建遇到的坑</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-07T15:42:15+08:00"
-              content="2016-07-07" >
-          07-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nginx接口数据返回的坑
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-08T09:36:54+08:00" content="2016-07-08">
+              2016-07-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <pre><code>项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
+  是被谁截断了呢？
+  我开始怀疑是afnetworking框架截断了，网上查了一通，也没找到原因。偶然在打断点的过程中看到了nginx字样，瞬间怀疑nginx截断了数据。google一下发现大量数据过长被nginx截断的文章。
+fastcgi_buffers 256 128k;
+chunked_transfer_encoding off;
+这么两句话就可以了，是因为fastcgi_buffers设置的太小造成的。
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/07/hexo博客搭建遇到的坑/" rel="next" title="hexo博客搭建遇到的坑">
+                <i class="fa fa-chevron-left"></i> hexo博客搭建遇到的坑
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -320,6 +345,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -339,8 +368,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://img4.imgtn.bdimg.com/it/u=1480188113,1074600533&fm=21&gp=0.jpg"
@@ -383,6 +421,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -486,11 +535,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   

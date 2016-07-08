@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://desehou.me/"/>
-  <updated>2016-07-07T08:03:28.000Z</updated>
+  <updated>2016-07-08T02:08:38.000Z</updated>
   <id>http://desehou.me/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx接口数据返回的坑</title>
+    <link href="http://desehou.me/2016/07/08/nginx%E6%8E%A5%E5%8F%A3%E6%95%B0%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E5%9D%91/"/>
+    <id>http://desehou.me/2016/07/08/nginx接口数据返回的坑/</id>
+    <published>2016-07-08T01:36:54.000Z</published>
+    <updated>2016-07-08T02:08:38.000Z</updated>
+    
+    <content type="html">&lt;pre&gt;&lt;code&gt;项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
+  是被谁截断了呢？
+  我开始怀疑是afnetworking框架截断了，网上查了一通，也没找到原因。偶然在打断点的过程中看到了nginx字样，瞬间怀疑nginx截断了数据。google一下发现大量数据过长被nginx截断的文章。
+fastcgi_buffers 256 128k;
+chunked_transfer_encoding off;
+这么两句话就可以了，是因为fastcgi_buffers设置的太小造成的。
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>hexo博客搭建遇到的坑</title>

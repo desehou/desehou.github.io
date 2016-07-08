@@ -240,6 +240,105 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/08/nginx接口数据返回的坑/" itemprop="url">
+                  nginx接口数据返回的坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-08T09:36:54+08:00" content="2016-07-08">
+              2016-07-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
+  是被谁截断了呢？
+  我开始怀疑是afnetworking框架截断了，网上查了一通，也没找到原因。偶然在打断点的过程中看到了nginx字样，瞬间怀疑nginx截断了数据。google一下发现大量数据过长被nginx截断的文章。
+fastcgi_buffers 256 128k;
+chunked_transfer_encoding off;
+这么两句话就可以了，是因为fastcgi_buffers设置的太小造成的。
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/07/hexo博客搭建遇到的坑/" itemprop="url">
                   hexo博客搭建遇到的坑
                 </a>
@@ -359,7 +458,7 @@ branch: master
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
