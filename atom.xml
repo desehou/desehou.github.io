@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://desehou.me/"/>
-  <updated>2016-07-08T03:15:41.000Z</updated>
+  <updated>2016-07-29T01:57:53.000Z</updated>
   <id>http://desehou.me/</id>
   
   <author>
@@ -14,6 +14,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用的本地保存数据的几种方式</title>
+    <link href="http://desehou.me/2016/07/29/%E5%B8%B8%E7%94%A8%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>http://desehou.me/2016/07/29/常用的本地保存数据的几种方式/</id>
+    <published>2016-07-29T01:53:05.000Z</published>
+    <updated>2016-07-29T01:57:53.000Z</updated>
+    
+    <content type="html">&lt;p&gt;在iOS开发过程中，不管是做什么应用，都会碰到数据保存的问题。将数据保存到本地，能够让程序的运行更加流畅，节省用户流量，减少不必要的网络请求，使得用户体验更好。下面介绍一下数据保存的方式：&lt;br&gt;1.NSKeyedArchiver：采用归档的形式来保存数据，该数据对象需要遵守NSCoding协议，并且该对象对应的类必须提供encodeWithCoder:和initWithCoder:方法。前一个方法告诉系统怎么对对象进行编码，而后一个方法则是告诉系统怎么对对象进行解码。例如对Possession对象归档保存。&lt;br&gt;定义Possession：&lt;br&gt;@interface Possession：NSObject&lt;nscoding&gt;{//遵守NSCoding协议&lt;br&gt;NSString &lt;em&gt;name;//待归档类型&lt;br&gt;}&lt;br&gt;@implementation Possession&lt;br&gt;-(void)encodeWithCoder:(NSCoder &lt;/em&gt;)aCoder{&lt;br&gt;[aCoder encodeObject:name forKey:@”name”];&lt;br&gt;}&lt;br&gt;-(void)initWithCoder:(NSCoder *)aDecoder{&lt;br&gt;name=[[aDeCoder decodeObjectforKey:@”name”] retain];&lt;br&gt;}&lt;br&gt;归档操作：&lt;br&gt;如果对Possession对象allPossession归档保存，只需要NSCoder子类NSKeyedArchiver的方法archiveRootObject:toFile: 即可。&lt;/nscoding&gt;&lt;/p&gt;
+&lt;p&gt;NSString *path = [self possessionArchivePath];&lt;br&gt;[NSKeyedArchiver archiveRootObject:allPossessions toFile: path ]&lt;br&gt;解压操作：&lt;/p&gt;
+&lt;p&gt;同样调用NSCoder子类NSKeyedArchiver的方法unarchiveRootObject:toFile: 即可&lt;br&gt;allPossessions = [[NSKeyedUnarchiver unarchiveObjectWithFile:path] retain];&lt;/p&gt;
+&lt;p&gt;缺点：归档的形式来保存数据，只能一次性归档保存以及一次性解压。所以只能针对小量数据，而且对数据操作比较笨拙，即如果想改动数据的某一小部分，还是需要解压整个数据或者归档整个数据。&lt;br&gt;2.NSUserDefaults：用来保存应用程序设置和属性、用户保存的数据。用户再次打开程序或开机后这些数据仍然存在。NSUserDefaults可以存储的数据类型包括：NSData、NSString、NSNumber、NSDate、NSArray、NSDictionary。如果要存储其他类型，则需要转换为前面的类型，才能用NSUserDefaults存储。具体实现为：&lt;br&gt;保存数据：&lt;br&gt;NSUserDefaults &lt;em&gt;defaults =[NSUserDefaults standardUserDefaults];&lt;br&gt;NSString &lt;/em&gt;name =@”default string“;&lt;br&gt;[defaults setObject:firstName forKey:@”name”];&lt;br&gt;//获得UIImage实例&lt;/p&gt;
+&lt;p&gt;UIImage *image=[[UIImage alloc]initWithContentsOfFile:@”photo.jpg”];&lt;/p&gt;
+&lt;p&gt;NSData *imageData = UIImageJPEGRepresentation(image, 100);//UIImage对象转换成NSData&lt;/p&gt;
+&lt;p&gt;[defaults synchronize];//用synchronize方法把数据持久化到standardUserDefaults数据库&lt;br&gt;读取数据：&lt;/p&gt;
+&lt;p&gt;NSUserDefaults &lt;em&gt;defaults =[NSUserDefaults standardUserDefaults];&lt;br&gt;NSString &lt;/em&gt;name = [defaults objectForKey:@”name”];//根据键值取出name&lt;br&gt;NSData &lt;em&gt;imageData = [defaults dataForKey:@”image”];&lt;br&gt;UIImage &lt;/em&gt;Image = [UIImage imageWithData:imageData];//NSData转换为UIImage&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Write写入方式：永久保存在磁盘中。具体方法为：&lt;br&gt;第一步：获得文件即将保存的路径：&lt;br&gt;NSArray &lt;em&gt;documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,  NSUserDomainMask,YES);//使用C函数NSSearchPathForDirectoriesInDomains来获得沙盒中目录的全路径。该函数有三个参数，目录类型、he domain mask、布尔值。其中布尔值表示是否需要通过～扩展路径。而且第一个参数是不变的，即为NSSearchPathDirectory 。在IOS中后两个参数也是不变的，即为：NSUserDomainMask 和 YES。&lt;br&gt;NSString &lt;/em&gt;ourDocumentPath =[documentPaths objectAtIndex:0];&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;还有一种方法是使用NSHomeDirectory函数获得sandbox的路径。具体的用法为：&lt;/p&gt;
+&lt;p&gt;NSString &lt;em&gt;sandboxPath = NSHomeDirectory();&lt;br&gt;// Once you have the full sandbox path, you can create a path from it，但是不能在sandbox的本文件层上写文件也不能创建目录，而应该是此基础上创建一个新的可写的目录，例如Documents,Library或者temp。&lt;br&gt;NSString &lt;/em&gt;documentPath = [sandboxPath&lt;br&gt;stringByAppendingPathComponent:@”Documents”];//将Documents添加到sandbox路径上，具体原因前面分析了！&lt;br&gt;这两者的区别就是：使用NSSearchPathForDirectoriesInDomains比在NSHomeDirectory后面添加Document更加安全。因为该文件目录可能在未来发送的系统上发生改变。&lt;/p&gt;
+&lt;p&gt;第二步：生成在该路径下的文件：&lt;br&gt;NSString *FileName=[documentDirectory stringByAppendingPathComponent:fileName];//fileName就是保存文件的文件名&lt;br&gt;第三步：往文件中写入数据：&lt;br&gt;[data writeToFile:FileName atomically:YES];//将NSData类型对象data写入文件，文件名为FileName&lt;/p&gt;
+&lt;p&gt;最后：从文件中读出数据：&lt;/p&gt;
+&lt;p&gt;NSData data=[NSData dataWithContentsOfFile:FileName options:0 error:NULL];//从FileName中读取出数据&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;SQLite：采用SQLite数据库来存储数据。SQLite作为一中小型数据库，应用ios中，跟前三种保存方式相比，相对比较复杂一些。还是一步步来吧！&lt;br&gt;第一步：需要添加SQLite相关的库以及头文件：在项目文件的Build Phases下，找到Link Binary Library(ies)，添加libsqlite3.0.dylib（libsqlite3.dylib与前者的区别暂时不知，两者应该差不多）；在项目文件中头文件或者源文件中添加头文件#import “/usr/include/sqlite3.h”&lt;br&gt;第二步：开始使用SQLite：&lt;br&gt;NSArray &lt;em&gt;documentsPaths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask , YES);&lt;br&gt;NSString &lt;/em&gt;databaseFilePath=[[documentsPaths objectAtIndex:0] stringByAppendingPathComponent:@”mydb”];&lt;br&gt;//上面两句已经比较熟悉了吧！&lt;br&gt;//打开数据库&lt;br&gt;if (sqlite3_open([databaseFilePath UTF8String], &amp;amp;database)==SQLITE_OK) {&lt;br&gt;NSLog(@”sqlite dadabase is opened.”);&lt;br&gt;}&lt;br&gt;else{ return;}//打开不成功就返回&lt;br&gt;在打开了数据库的前提下，如果数据库没有表，那就开始建表了哦！&lt;br&gt;char &lt;em&gt;error;&lt;br&gt;const char &lt;/em&gt;createSql=”create table(id integer primary key autoincrement, name text)”;&lt;br&gt;if (sqlite3_exec(database, createSql, NULL, NULL, &amp;amp;error)==SQLITE_OK) {&lt;br&gt;NSLog(@”create table is ok.”);&lt;br&gt;}&lt;br&gt;else&lt;br&gt;{&lt;br&gt;NSLog(@”error: %s”,error);&lt;br&gt;sqlite3_free(error);//每次使用完毕清空error字符串，提供给下一次使用&lt;br&gt;}&lt;br&gt;建表完成之后，就开始插入记录：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;const char *insertSql=”insert into a person (name) values(‘gg’)”;&lt;br&gt;if (sqlite3_exec(database, insertSql, NULL, NULL, &amp;amp;error)==SQLITE_OK) {&lt;br&gt;NSLog(@”insert operation is ok.”);&lt;br&gt;}&lt;/p&gt;
+&lt;p&gt;else&lt;br&gt;{&lt;br&gt;NSLog(@”error: %s”,error);&lt;br&gt;sqlite3_free(error);//每次使用完毕清空error字符串，提供给下一次使用&lt;br&gt;}&lt;br&gt;下一步，查询记录：&lt;/p&gt;
+&lt;p&gt;const char &lt;em&gt;selectSql=”select id,name from a person”;&lt;br&gt;sqlite3_stmt &lt;/em&gt;statement;&lt;br&gt;if (sqlite3_prepare_v2(database,selectSql, -1, &amp;amp;statement, nil)==SQLITE_OK) {&lt;br&gt;NSLog(@”select operation is ok.”);&lt;br&gt;}&lt;br&gt;else&lt;br&gt;{&lt;br&gt;NSLog(@”error: %s”,error);&lt;br&gt;sqlite3_free(error);&lt;br&gt;}&lt;br&gt;while(sqlite3_step(statement)==SQLITE_ROW) {&lt;br&gt;int _id=sqlite3_column_int(statement, 0);&lt;br&gt;NSString &lt;em&gt;name=(char&lt;/em&gt;)sqlite3_column_text(statement, 1);&lt;br&gt;NSLog(@”row&amp;gt;&amp;gt;id %i, name %s”,_id,name);&lt;br&gt;}&lt;br&gt;sqlite3_finalize(statement);&lt;/p&gt;
+&lt;p&gt;最后，关闭数据库：&lt;/p&gt;
+&lt;p&gt;sqlite3_close(database);&lt;br&gt;注意：写入数据库，字符串可以采用char方式，而从数据库中取出char类型，当char类型有表示中文字符时，会出现乱码。这是因为数据库默认使用ascII编码方式。所以要想正确从数据库中取出中文，需要用NSString来接收从数据库取出的字符串。&lt;br&gt;   我最喜欢用的是NSUserDefaults和本地文件Plist方式，用NSUserDefaults来存储一些加密过的用户信息，比如账号密码啥的，用Plist来存储一些用户收藏的信息等一些暂时需要缓存的数据。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在iOS开发过程中，不管是做什么应用，都会碰到数据保存的问题。将数据保存到本地，能够让程序的运行更加流畅，节省用户流量，减少不必要的网络请求，使得用户体验更好。下面介绍一下数据保存的方式：&lt;br&gt;1.NSKeyedArchiver：采用归档的形式来保存数据，该数据对象需要遵
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>nginx接口数据返回的坑</title>

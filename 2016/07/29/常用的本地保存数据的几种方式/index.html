@@ -86,15 +86,16 @@
 
 
 
-<meta name="description" content="记录技术开发中遇到的坑!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="得瑟侯">
-<meta property="og:url" content="http://desehou.me/index.html">
+<meta name="description" content="在iOS开发过程中，不管是做什么应用，都会碰到数据保存的问题。将数据保存到本地，能够让程序的运行更加流畅，节省用户流量，减少不必要的网络请求，使得用户体验更好。下面介绍一下数据保存的方式：1.NSKeyedArchiver：采用归档的形式来保存数据，该数据对象需要遵守NSCoding协议，并且该对象对应的类必须提供encodeWithCoder:和initWithCoder:方法。前一个方法告诉系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用的本地保存数据的几种方式">
+<meta property="og:url" content="http://desehou.me/2016/07/29/常用的本地保存数据的几种方式/index.html">
 <meta property="og:site_name" content="得瑟侯">
-<meta property="og:description" content="记录技术开发中遇到的坑!">
+<meta property="og:description" content="在iOS开发过程中，不管是做什么应用，都会碰到数据保存的问题。将数据保存到本地，能够让程序的运行更加流畅，节省用户流量，减少不必要的网络请求，使得用户体验更好。下面介绍一下数据保存的方式：1.NSKeyedArchiver：采用归档的形式来保存数据，该数据对象需要遵守NSCoding协议，并且该对象对应的类必须提供encodeWithCoder:和initWithCoder:方法。前一个方法告诉系">
+<meta property="og:updated_time" content="2016-07-29T01:57:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="得瑟侯">
-<meta name="twitter:description" content="记录技术开发中遇到的坑!">
+<meta name="twitter:title" content="常用的本地保存数据的几种方式">
+<meta name="twitter:description" content="在iOS开发过程中，不管是做什么应用，都会碰到数据保存的问题。将数据保存到本地，能够让程序的运行更加流畅，节省用户流量，减少不必要的网络请求，使得用户体验更好。下面介绍一下数据保存的方式：1.NSKeyedArchiver：采用归档的形式来保存数据，该数据对象需要遵守NSCoding协议，并且该对象对应的类必须提供encodeWithCoder:和initWithCoder:方法。前一个方法告诉系">
 
 
 
@@ -115,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://desehou.me/"/>
+  <link rel="canonical" href="http://desehou.me/2016/07/29/常用的本地保存数据的几种方式/"/>
 
-  <title> 得瑟侯 </title>
+  <title> 常用的本地保存数据的几种方式 | 得瑟侯 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,9 +139,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,9 +216,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -239,10 +238,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/07/29/常用的本地保存数据的几种方式/" itemprop="url">
-                  常用的本地保存数据的几种方式
-                </a>
+                常用的本地保存数据的几种方式
               
             
           </h1>
@@ -282,9 +278,7 @@
       
 
       
-        
-          
-            <p>在iOS开发过程中，不管是做什么应用，都会碰到数据保存的问题。将数据保存到本地，能够让程序的运行更加流畅，节省用户流量，减少不必要的网络请求，使得用户体验更好。下面介绍一下数据保存的方式：<br>1.NSKeyedArchiver：采用归档的形式来保存数据，该数据对象需要遵守NSCoding协议，并且该对象对应的类必须提供encodeWithCoder:和initWithCoder:方法。前一个方法告诉系统怎么对对象进行编码，而后一个方法则是告诉系统怎么对对象进行解码。例如对Possession对象归档保存。<br>定义Possession：<br>@interface Possession：NSObject<nscoding>{//遵守NSCoding协议<br>NSString <em>name;//待归档类型<br>}<br>@implementation Possession<br>-(void)encodeWithCoder:(NSCoder </em>)aCoder{<br>[aCoder encodeObject:name forKey:@”name”];<br>}<br>-(void)initWithCoder:(NSCoder *)aDecoder{<br>name=[[aDeCoder decodeObjectforKey:@”name”] retain];<br>}<br>归档操作：<br>如果对Possession对象allPossession归档保存，只需要NSCoder子类NSKeyedArchiver的方法archiveRootObject:toFile: 即可。</nscoding></p>
+        <p>在iOS开发过程中，不管是做什么应用，都会碰到数据保存的问题。将数据保存到本地，能够让程序的运行更加流畅，节省用户流量，减少不必要的网络请求，使得用户体验更好。下面介绍一下数据保存的方式：<br>1.NSKeyedArchiver：采用归档的形式来保存数据，该数据对象需要遵守NSCoding协议，并且该对象对应的类必须提供encodeWithCoder:和initWithCoder:方法。前一个方法告诉系统怎么对对象进行编码，而后一个方法则是告诉系统怎么对对象进行解码。例如对Possession对象归档保存。<br>定义Possession：<br>@interface Possession：NSObject<nscoding>{//遵守NSCoding协议<br>NSString <em>name;//待归档类型<br>}<br>@implementation Possession<br>-(void)encodeWithCoder:(NSCoder </em>)aCoder{<br>[aCoder encodeObject:name forKey:@”name”];<br>}<br>-(void)initWithCoder:(NSCoder *)aDecoder{<br>name=[[aDeCoder decodeObjectforKey:@”name”] retain];<br>}<br>归档操作：<br>如果对Possession对象allPossession归档保存，只需要NSCoder子类NSKeyedArchiver的方法archiveRootObject:toFile: 即可。</nscoding></p>
 <p>NSString *path = [self possessionArchivePath];<br>[NSKeyedArchiver archiveRootObject:allPossessions toFile: path ]<br>解压操作：</p>
 <p>同样调用NSCoder子类NSKeyedArchiver的方法unarchiveRootObject:toFile: 即可<br>allPossessions = [[NSKeyedUnarchiver unarchiveObjectWithFile:path] retain];</p>
 <p>缺点：归档的形式来保存数据，只能一次性归档保存以及一次性解压。所以只能针对小量数据，而且对数据操作比较笨拙，即如果想改动数据的某一小部分，还是需要解压整个数据或者归档整个数据。<br>2.NSUserDefaults：用来保存应用程序设置和属性、用户保存的数据。用户再次打开程序或开机后这些数据仍然存在。NSUserDefaults可以存储的数据类型包括：NSData、NSString、NSNumber、NSDate、NSArray、NSDictionary。如果要存储其他类型，则需要转换为前面的类型，才能用NSUserDefaults存储。具体实现为：<br>保存数据：<br>NSUserDefaults <em>defaults =[NSUserDefaults standardUserDefaults];<br>NSString </em>name =@”default string“;<br>[defaults setObject:firstName forKey:@”name”];<br>//获得UIImage实例</p>
@@ -309,16 +303,20 @@
 <p>最后，关闭数据库：</p>
 <p>sqlite3_close(database);<br>注意：写入数据库，字符串可以采用char方式，而从数据库中取出char类型，当char类型有表示中文字符时，会出现乱码。这是因为数据库默认使用ascII编码方式。所以要想正确从数据库中取出中文，需要用NSString来接收从数据库取出的字符串。<br>   我最喜欢用的是NSUserDefaults和本地文件Plist方式，用NSUserDefaults来存储一些加密过的用户信息，比如账号密码啥的，用Plist来存储一些用户收藏的信息等一些暂时需要缓存的数据。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -326,219 +324,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/08/nginx接口数据返回的坑/" rel="next" title="nginx接口数据返回的坑">
+                <i class="fa fa-chevron-left"></i> nginx接口数据返回的坑
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/07/08/nginx接口数据返回的坑/" itemprop="url">
-                  nginx接口数据返回的坑
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T09:36:54+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <pre><code>项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
-  是被谁截断了呢？
-  我开始怀疑是afnetworking框架截断了，网上查了一通，也没找到原因。偶然在打断点的过程中看到了nginx字样，瞬间怀疑nginx截断了数据。google一下发现大量数据过长被nginx截断的文章。
-  fastcgi_buffers      8 4K;
-  fastcgi_buffer_size  4K;
-</code></pre><p>fastcgi_buffers 控制 nginx 最多创建 8 个大小为 4K 的缓冲区，而 fastcgi_buffer_size 则是处理 Response 时第一个缓冲区的大小，不包含在前者中。所以总计能创建的最大内存缓冲区大小是 8<em>4K+4K = 36k。而这些缓冲区是根据实际的 Response 大小动态生成的，并不是一次性创建的。比如一个 8K 的页面，Nginx 会创建 2</em>4K 共 2 个 buffers。</p>
-<p>当 Response 小于等于 36k 时，所有数据当然全部在内存中处理。如果 Response 大于 36k 呢？fastcgi_temp 的作用就在于此。多出来的数据会被临时写入到文件中，放在这个目录下面。</p>
-<p>内存中缓冲了 36Kb，剩下的会写入的文件中。而实际的情况是，运行 Nginx Process 的用户并没有 fastcgi_temp 目录的写权限，于是剩下的数据就丢失掉了。<br>   所以nginx要给这个目录的读写权限，并且将nginx改为root用户。<br>   重新请求正常。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/07/hexo博客搭建遇到的坑/" itemprop="url">
-                  hexo博客搭建遇到的坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-07T15:42:15+08:00" content="2016-07-07">
-              2016-07-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>   之前自己的博客在CSDN，已经好久没有更新维护，最近项目告一段落，打算在github上搭建一个技术博客，查了很多资料，选中了hexo，经过一下午的折腾终于成功，第一篇文章就总结下自己搭建hexo过程中遇到的坑吧。</p>
-<p>坑1：hexo不能push到github上<br>    hexo安装资料：<br>    <a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">http://www.jianshu.com/p/465830080ea9</a><br>    自己按照上述资料安装，发现死活不能deploy到github，折腾了好久，甚至重新删除安装还是不行，后来发现原因，原来是type参数和值中间必须要有空格，而那个教程中却是没有空格的，并且hexo的官方文档里着重强调必须要注意空格问题。看来是自己不仔细看官方文档的后果。<br>     type: git</p>
-<pre><code>repo: https://github.com/leopardpan/leopardpan.github.io.git
-
-branch: master
-</code></pre><p>坑2：注意站点_config.yml和theme _config.yml<br>    hexo部署成功，自己感觉主题太丑了，想换个主题，换了主题之后不管自己如何设置头像就是不能设置成功，后来发现原因，有的主题换头像实在站点的_config.yml中添加avatar字段和头像地址，而有的头像则是在主题目录下的_config.yml中进行配置，这点一定要注意，仔细查看所用主题的文档说明。<br>坑3: 自己的域名指向github.io不成功<br>     自己在修改过_config.yml之后，会执行hexo c，hexo g,hexo d命令，导致原本在github上的CNAME文件被删除，域名指向不成功。</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -546,6 +357,10 @@ branch: master
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -565,8 +380,17 @@ branch: master
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://img4.imgtn.bdimg.com/it/u=1480188113,1074600533&fm=21&gp=0.jpg"
@@ -609,6 +433,17 @@ branch: master
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -712,6 +547,10 @@ branch: master
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
