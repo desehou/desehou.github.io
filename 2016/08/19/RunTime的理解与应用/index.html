@@ -94,11 +94,13 @@
 <meta property="og:site_name" content="得瑟侯">
 <meta property="og:description" content="RunTime在日常开发中不经常使用到，但是面试的时候经常被问到，下面是网上对RunTime的解释和在日常项目中对它的应用。
 //博客原文地址：http://blog.csdn.net/a19860903/article/details/44853841RunTime简称运行时。就是系统在运行的时候的一些机制，其中最主要的是消息机制。对于C语言，函数的调用在编译的时候会决定调用哪个函数（ C语言的">
-<meta property="og:updated_time" content="2016-08-19T01:34:47.000Z">
+<meta property="og:image" content="http://www.cocos.com/uploads/20141018/1413628797629491.png">
+<meta property="og:updated_time" content="2016-08-26T06:43:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RunTime的理解与应用">
 <meta name="twitter:description" content="RunTime在日常开发中不经常使用到，但是面试的时候经常被问到，下面是网上对RunTime的解释和在日常项目中对它的应用。
 //博客原文地址：http://blog.csdn.net/a19860903/article/details/44853841RunTime简称运行时。就是系统在运行的时候的一些机制，其中最主要的是消息机制。对于C语言，函数的调用在编译的时候会决定调用哪个函数（ C语言的">
+<meta name="twitter:image" content="http://www.cocos.com/uploads/20141018/1413628797629491.png">
 
 
 
@@ -305,7 +307,7 @@
 <p>我们可以看到，对于一个Class类中，存在很多东西，下面我来一一解释一下：</p>
 <p>Class isa：指向metaclass，也就是静态的Class。一般一个Obj对象中的isa会指向普通的Class，这个Class中存储普通成员变量和对 象方法（“-”开头的方法），普通Class中的isa指针指向静态Class，静态Class中存储static类型成员变量和类方法（“+”开头的方 法）。</p>
 <p>Class super_class:指向父类，如果这个类是根类，则为NULL。</p>
-<p>下面一张图片很好的描述了类和对象的继承关系：<br><a href="http://www.cocos.com/uploads/20141018/1413628797629491.png" target="_blank" rel="external">http://www.cocos.com/uploads/20141018/1413628797629491.png</a><br>注意：所有metaclass中isa指针都指向跟metaclass。而跟metaclass则指向自身。Root metaclass是通过继承Root class产生的。与root class结构体成员一致，也就是前面提到的结构。不同的是Root metaclass的isa指针指向自身。</p>
+<p>下面一张图片很好的描述了类和对象的继承关系：<br><img src="http://www.cocos.com/uploads/20141018/1413628797629491.png" alt="img"><br>注意：所有metaclass中isa指针都指向跟metaclass。而跟metaclass则指向自身。Root metaclass是通过继承Root class产生的。与root class结构体成员一致，也就是前面提到的结构。不同的是Root metaclass的isa指针指向自身。</p>
 <p>Class类中其他的成员这里就先不做过多解释了，下面我们来看看：</p>
 <p>@selector (makeText)：这是一个SEL方法选择器。SEL其主要作用是快速的通过方法名字（makeText）查找到对应方法的函数指针，然后调用其函 数。SEL其本身是一个Int类型的一个地址，地址中存放着方法的名字。对于一个类中。每一个方法对应着一个SEL。所以iOS类中不能存在2个名称相同 的方法，即使参数类型不同，因为SEL是根据方法名字生成的，相同的方法名称只能对应一个SEL。</p>
 <p>下面我们就来看看具体消息发送之后是怎么来动态查找对应的方法的。</p>
@@ -403,6 +405,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/08/26/iOS-APP-启动原理/" rel="prev" title="iOS APP 启动原理">
+                iOS APP 启动原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -469,7 +475,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

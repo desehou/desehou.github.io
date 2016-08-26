@@ -240,6 +240,108 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/26/iOS-APP-启动原理/" itemprop="url">
+                  iOS APP 启动原理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-26T14:52:18+08:00" content="2016-08-26">
+              2016-08-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、app启动的大概过程<br>   1.main函数<br>   2.UIApplicationMain<br>     <em>创建UIApplication对象
+     </em>创建UIApplication的AppDelegate对象<br>   3.（未使用storyboard情况下）<br>     delegate对象开始处理监听系统事件<br>     <em>app启动结束的时候，调用AppDelegate的didFinishLaunchingWithOptions方法；
+     </em>在didFinishLaunchingWithOptions方法中创建UIWindow，创建rootViewController；<br>     <em>显示app界面<br>   3.（使用storyboard情况下）<br>      delegate对象开始处理监听系统事件
+     </em>根据info.plist获得要显示的storyboard，加载要显示的storyboard；<br><em>创建UIwindow，创建rootViewController;
+     </em>显示app界面<br>二、app启动分析<br>   UIApplicationMain<br>   main函数中执行了一个UIApplicationMain这个函数<br>   intUIApplicationMain(int argc, char <em>argv[], NSString </em>principalClassName, NSString *delegateClassName);<br>   argc、argv：直接传递给UIApplicationMain进行相关处理即可<br>   principalClassName：指定应用程序类名（app的象征），该类必须是UIApplication(或子类)。如果为nil,则用UIApplication类作为默认值<br>   delegateClassName：指定应用程序的代理类，该类必须遵守UIApplicationDelegate协议<br>   UIApplicationMain函数会根据principalClassName创建UIApplication对象，根据delegateClassName创建一个delegate对象，并将该delegate对象赋值给UIApplication对象中的delegate属性<br>   接着会建立应用程序的Main Runloop（事件循环），进行事件的处理(首先会在程序完毕后调用delegate对象的application:didFinishLaunchingWithOptions:方法)<br>    程序正常退出时UIApplicationMain函数才返回</p>
+<p>#import <uikit uikit.h=""></uikit></p>
+<p>#import “YYAppDelegate.h”</p>
+<p>int main(int argc, char <em> argv[])<br>{<br>@autoreleasepool {<br>// return UIApplicationMain(argc, argv, nil, NSStringFromClass([YYAppDelegate class]));<br>// return UIApplicationMain(argc, argv, @”UIApplication”, NSStringFromClass([YYAppDelegate class]));<br>/</em><br>argc: 系统或者用户传入的参数个数<br>argv: 系统或者用户传入的实际参数<br>1.根据传入的第三个参数创建UIApplication对象<br>2.根据传入的第四个产生创建UIApplication对象的代理<br>3.设置刚刚创建出来的代理对象为UIApplication的代理<br>4.开启一个事件循环<br>*/<br>return UIApplicationMain(argc, argv, @”UIApplication”, @”YYAppDelegate”);<br>}<br>}<br>系统入口的代码和参数说明：</p>
+<p>argc:系统或者用户传入的参数<br>argv:系统或用户传入的实际参数<br>1.根据传入的第三个参数，创建UIApplication对象<br>2.根据传入的第四个产生创建UIApplication对象的代理<br>3.设置刚刚创建出来的代理对象为UIApplication的代理<br>4.开启一个事件循环（可以理解为里面是一个死循环）这个时间循环是一个队列（先进先出）先添加进去的先处理</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/19/RunTime的理解与应用/" itemprop="url">
                   RunTime的理解与应用
                 </a>
@@ -308,7 +410,7 @@
 <p>我们可以看到，对于一个Class类中，存在很多东西，下面我来一一解释一下：</p>
 <p>Class isa：指向metaclass，也就是静态的Class。一般一个Obj对象中的isa会指向普通的Class，这个Class中存储普通成员变量和对 象方法（“-”开头的方法），普通Class中的isa指针指向静态Class，静态Class中存储static类型成员变量和类方法（“+”开头的方 法）。</p>
 <p>Class super_class:指向父类，如果这个类是根类，则为NULL。</p>
-<p>下面一张图片很好的描述了类和对象的继承关系：<br><a href="http://www.cocos.com/uploads/20141018/1413628797629491.png" target="_blank" rel="external">http://www.cocos.com/uploads/20141018/1413628797629491.png</a><br>注意：所有metaclass中isa指针都指向跟metaclass。而跟metaclass则指向自身。Root metaclass是通过继承Root class产生的。与root class结构体成员一致，也就是前面提到的结构。不同的是Root metaclass的isa指针指向自身。</p>
+<p>下面一张图片很好的描述了类和对象的继承关系：<br><img src="http://www.cocos.com/uploads/20141018/1413628797629491.png" alt="img"><br>注意：所有metaclass中isa指针都指向跟metaclass。而跟metaclass则指向自身。Root metaclass是通过继承Root class产生的。与root class结构体成员一致，也就是前面提到的结构。不同的是Root metaclass的isa指针指向自身。</p>
 <p>Class类中其他的成员这里就先不做过多解释了，下面我们来看看：</p>
 <p>@selector (makeText)：这是一个SEL方法选择器。SEL其主要作用是快速的通过方法名字（makeText）查找到对应方法的函数指针，然后调用其函 数。SEL其本身是一个Int类型的一个地址，地址中存放着方法的名字。对于一个类中。每一个方法对应着一个SEL。所以iOS类中不能存在2个名称相同 的方法，即使参数类型不同，因为SEL是根据方法名字生成的，相同的方法名称只能对应一个SEL。</p>
 <p>下面我们就来看看具体消息发送之后是怎么来动态查找对应的方法的。</p>
@@ -759,7 +861,7 @@ branch: master
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -86,15 +86,19 @@
 
 
 
-<meta name="description" content="记录技术开发中遇到的坑!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="得瑟侯">
-<meta property="og:url" content="http://desehou.me/archives/2016/index.html">
+<meta name="description" content="一、app启动的大概过程   1.main函数   2.UIApplicationMain     创建UIApplication对象
+     创建UIApplication的AppDelegate对象   3.（未使用storyboard情况下）     delegate对象开始处理监听系统事件     app启动结束的时候，调用AppDelegate的didFinishLaunchingWi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS APP 启动原理">
+<meta property="og:url" content="http://desehou.me/2016/08/26/iOS-APP-启动原理/index.html">
 <meta property="og:site_name" content="得瑟侯">
-<meta property="og:description" content="记录技术开发中遇到的坑!">
+<meta property="og:description" content="一、app启动的大概过程   1.main函数   2.UIApplicationMain     创建UIApplication对象
+     创建UIApplication的AppDelegate对象   3.（未使用storyboard情况下）     delegate对象开始处理监听系统事件     app启动结束的时候，调用AppDelegate的didFinishLaunchingWi">
+<meta property="og:updated_time" content="2016-08-26T07:25:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="得瑟侯">
-<meta name="twitter:description" content="记录技术开发中遇到的坑!">
+<meta name="twitter:title" content="iOS APP 启动原理">
+<meta name="twitter:description" content="一、app启动的大概过程   1.main函数   2.UIApplicationMain     创建UIApplication对象
+     创建UIApplication的AppDelegate对象   3.（未使用storyboard情况下）     delegate对象开始处理监听系统事件     app启动结束的时候，调用AppDelegate的didFinishLaunchingWi">
 
 
 
@@ -115,9 +119,9 @@
 
 
 
-  <link rel="canonical" href="http://desehou.me/archives/2016/"/>
+  <link rel="canonical" href="http://desehou.me/2016/08/26/iOS-APP-启动原理/"/>
 
-  <title> 归档 | 得瑟侯 </title>
+  <title> iOS APP 启动原理 | 得瑟侯 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +142,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -216,214 +220,124 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 5 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/08/26/iOS-APP-启动原理/" itemprop="url">
-              
-                <span itemprop="name">iOS APP 启动原理</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-26T14:52:18+08:00"
-              content="2016-08-26" >
-          08-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/08/19/RunTime的理解与应用/" itemprop="url">
-              
-                <span itemprop="name">RunTime的理解与应用</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-19T09:17:32+08:00"
-              content="2016-08-19" >
-          08-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/29/常用的本地保存数据的几种方式/" itemprop="url">
-              
-                <span itemprop="name">常用的本地保存数据的几种方式</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-29T09:53:05+08:00"
-              content="2016-07-29" >
-          07-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/08/nginx接口数据返回的坑/" itemprop="url">
-              
-                <span itemprop="name">nginx接口数据返回的坑</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-08T09:36:54+08:00"
-              content="2016-07-08" >
-          07-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/07/hexo博客搭建遇到的坑/" itemprop="url">
-              
-                <span itemprop="name">hexo博客搭建遇到的坑</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-07T15:42:15+08:00"
-              content="2016-07-07" >
-          07-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS APP 启动原理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-26T14:52:18+08:00" content="2016-08-26">
+              2016-08-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一、app启动的大概过程<br>   1.main函数<br>   2.UIApplicationMain<br>     <em>创建UIApplication对象
+     </em>创建UIApplication的AppDelegate对象<br>   3.（未使用storyboard情况下）<br>     delegate对象开始处理监听系统事件<br>     <em>app启动结束的时候，调用AppDelegate的didFinishLaunchingWithOptions方法；
+     </em>在didFinishLaunchingWithOptions方法中创建UIWindow，创建rootViewController；<br>     <em>显示app界面<br>   3.（使用storyboard情况下）<br>      delegate对象开始处理监听系统事件
+     </em>根据info.plist获得要显示的storyboard，加载要显示的storyboard；<br><em>创建UIwindow，创建rootViewController;
+     </em>显示app界面<br>二、app启动分析<br>   UIApplicationMain<br>   main函数中执行了一个UIApplicationMain这个函数<br>   intUIApplicationMain(int argc, char <em>argv[], NSString </em>principalClassName, NSString *delegateClassName);<br>   argc、argv：直接传递给UIApplicationMain进行相关处理即可<br>   principalClassName：指定应用程序类名（app的象征），该类必须是UIApplication(或子类)。如果为nil,则用UIApplication类作为默认值<br>   delegateClassName：指定应用程序的代理类，该类必须遵守UIApplicationDelegate协议<br>   UIApplicationMain函数会根据principalClassName创建UIApplication对象，根据delegateClassName创建一个delegate对象，并将该delegate对象赋值给UIApplication对象中的delegate属性<br>   接着会建立应用程序的Main Runloop（事件循环），进行事件的处理(首先会在程序完毕后调用delegate对象的application:didFinishLaunchingWithOptions:方法)<br>    程序正常退出时UIApplicationMain函数才返回</p>
+<p>#import <uikit uikit.h=""></uikit></p>
+<p>#import “YYAppDelegate.h”</p>
+<p>int main(int argc, char <em> argv[])<br>{<br>@autoreleasepool {<br>// return UIApplicationMain(argc, argv, nil, NSStringFromClass([YYAppDelegate class]));<br>// return UIApplicationMain(argc, argv, @”UIApplication”, NSStringFromClass([YYAppDelegate class]));<br>/</em><br>argc: 系统或者用户传入的参数个数<br>argv: 系统或者用户传入的实际参数<br>1.根据传入的第三个参数创建UIApplication对象<br>2.根据传入的第四个产生创建UIApplication对象的代理<br>3.设置刚刚创建出来的代理对象为UIApplication的代理<br>4.开启一个事件循环<br>*/<br>return UIApplicationMain(argc, argv, @”UIApplication”, @”YYAppDelegate”);<br>}<br>}<br>系统入口的代码和参数说明：</p>
+<p>argc:系统或者用户传入的参数<br>argv:系统或用户传入的实际参数<br>1.根据传入的第三个参数，创建UIApplication对象<br>2.根据传入的第四个产生创建UIApplication对象的代理<br>3.设置刚刚创建出来的代理对象为UIApplication的代理<br>4.开启一个事件循环（可以理解为里面是一个死循环）这个时间循环是一个队列（先进先出）先添加进去的先处理</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/19/RunTime的理解与应用/" rel="next" title="RunTime的理解与应用">
+                <i class="fa fa-chevron-left"></i> RunTime的理解与应用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -431,6 +345,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -450,8 +368,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://img4.imgtn.bdimg.com/it/u=1480188113,1074600533&fm=21&gp=0.jpg"
@@ -494,6 +421,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -597,11 +535,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   

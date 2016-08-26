@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://desehou.me/"/>
-  <updated>2016-08-19T01:34:47.000Z</updated>
+  <updated>2016-08-26T07:25:42.000Z</updated>
   <id>http://desehou.me/</id>
   
   <author>
@@ -16,11 +16,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS APP 启动原理</title>
+    <link href="http://desehou.me/2016/08/26/iOS-APP-%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86/"/>
+    <id>http://desehou.me/2016/08/26/iOS-APP-启动原理/</id>
+    <published>2016-08-26T06:52:18.000Z</published>
+    <updated>2016-08-26T07:25:42.000Z</updated>
+    
+    <content type="html">&lt;p&gt;一、app启动的大概过程&lt;br&gt;   1.main函数&lt;br&gt;   2.UIApplicationMain&lt;br&gt;     &lt;em&gt;创建UIApplication对象
+     &lt;/em&gt;创建UIApplication的AppDelegate对象&lt;br&gt;   3.（未使用storyboard情况下）&lt;br&gt;     delegate对象开始处理监听系统事件&lt;br&gt;     &lt;em&gt;app启动结束的时候，调用AppDelegate的didFinishLaunchingWithOptions方法；
+     &lt;/em&gt;在didFinishLaunchingWithOptions方法中创建UIWindow，创建rootViewController；&lt;br&gt;     &lt;em&gt;显示app界面&lt;br&gt;   3.（使用storyboard情况下）&lt;br&gt;      delegate对象开始处理监听系统事件
+     &lt;/em&gt;根据info.plist获得要显示的storyboard，加载要显示的storyboard；&lt;br&gt;&lt;em&gt;创建UIwindow，创建rootViewController;
+     &lt;/em&gt;显示app界面&lt;br&gt;二、app启动分析&lt;br&gt;   UIApplicationMain&lt;br&gt;   main函数中执行了一个UIApplicationMain这个函数&lt;br&gt;   intUIApplicationMain(int argc, char &lt;em&gt;argv[], NSString &lt;/em&gt;principalClassName, NSString *delegateClassName);&lt;br&gt;   argc、argv：直接传递给UIApplicationMain进行相关处理即可&lt;br&gt;   principalClassName：指定应用程序类名（app的象征），该类必须是UIApplication(或子类)。如果为nil,则用UIApplication类作为默认值&lt;br&gt;   delegateClassName：指定应用程序的代理类，该类必须遵守UIApplicationDelegate协议&lt;br&gt;   UIApplicationMain函数会根据principalClassName创建UIApplication对象，根据delegateClassName创建一个delegate对象，并将该delegate对象赋值给UIApplication对象中的delegate属性&lt;br&gt;   接着会建立应用程序的Main Runloop（事件循环），进行事件的处理(首先会在程序完毕后调用delegate对象的application:didFinishLaunchingWithOptions:方法)&lt;br&gt;    程序正常退出时UIApplicationMain函数才返回&lt;/p&gt;
+&lt;p&gt;#import &lt;uikit uikit.h=&quot;&quot;&gt;&lt;/uikit&gt;&lt;/p&gt;
+&lt;p&gt;#import “YYAppDelegate.h”&lt;/p&gt;
+&lt;p&gt;int main(int argc, char &lt;em&gt; argv[])&lt;br&gt;{&lt;br&gt;@autoreleasepool {&lt;br&gt;// return UIApplicationMain(argc, argv, nil, NSStringFromClass([YYAppDelegate class]));&lt;br&gt;// return UIApplicationMain(argc, argv, @”UIApplication”, NSStringFromClass([YYAppDelegate class]));&lt;br&gt;/&lt;/em&gt;&lt;br&gt;argc: 系统或者用户传入的参数个数&lt;br&gt;argv: 系统或者用户传入的实际参数&lt;br&gt;1.根据传入的第三个参数创建UIApplication对象&lt;br&gt;2.根据传入的第四个产生创建UIApplication对象的代理&lt;br&gt;3.设置刚刚创建出来的代理对象为UIApplication的代理&lt;br&gt;4.开启一个事件循环&lt;br&gt;*/&lt;br&gt;return UIApplicationMain(argc, argv, @”UIApplication”, @”YYAppDelegate”);&lt;br&gt;}&lt;br&gt;}&lt;br&gt;系统入口的代码和参数说明：&lt;/p&gt;
+&lt;p&gt;argc:系统或者用户传入的参数&lt;br&gt;argv:系统或用户传入的实际参数&lt;br&gt;1.根据传入的第三个参数，创建UIApplication对象&lt;br&gt;2.根据传入的第四个产生创建UIApplication对象的代理&lt;br&gt;3.设置刚刚创建出来的代理对象为UIApplication的代理&lt;br&gt;4.开启一个事件循环（可以理解为里面是一个死循环）这个时间循环是一个队列（先进先出）先添加进去的先处理&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一、app启动的大概过程&lt;br&gt;   1.main函数&lt;br&gt;   2.UIApplicationMain&lt;br&gt;     &lt;em&gt;创建UIApplication对象
+     &lt;/em&gt;创建UIApplication的AppDelegate对象&lt;br&gt;   3.（未使用s
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>RunTime的理解与应用</title>
     <link href="http://desehou.me/2016/08/19/RunTime%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E5%BA%94%E7%94%A8/"/>
     <id>http://desehou.me/2016/08/19/RunTime的理解与应用/</id>
     <published>2016-08-19T01:17:32.000Z</published>
-    <updated>2016-08-19T01:34:47.000Z</updated>
+    <updated>2016-08-26T06:43:04.000Z</updated>
     
     <content type="html">&lt;p&gt;RunTime在日常开发中不经常使用到，但是面试的时候经常被问到，下面是网上对RunTime的解释和在日常项目中对它的应用。&lt;/p&gt;
 &lt;p&gt;//博客原文地址：&lt;a href=&quot;http://blog.csdn.net/a19860903/article/details/44853841&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/a19860903/article/details/44853841&lt;/a&gt;&lt;br&gt;RunTime简称运行时。就是系统在运行的时候的一些机制，其中最主要的是消息机制。对于C语言，函数的调用在编译的时候会决定调用哪个函数（ C语言的函数调用请看这里 ）。编译完成之后直接顺序执行，无任何二义性。OC的函数调用成为消息发送。属于动态调用过程。在编译的时候并不能决定真正调用哪个函数（事实证明，在编 译阶段，OC可以调用任何函数，即使这个函数并未实现，只要申明过就不会报错。而C语言在编译阶段就会报错）。只有在真正运行的时候才会根据函数的名称找 到对应的函数来调用。&lt;br&gt;那OC是怎么实现动态调用的呢？下面我们来看看OC通过发送消息来达到动态调用的秘密。假&lt;/p&gt;
@@ -46,7 +74,7 @@
 &lt;p&gt;我们可以看到，对于一个Class类中，存在很多东西，下面我来一一解释一下：&lt;/p&gt;
 &lt;p&gt;Class isa：指向metaclass，也就是静态的Class。一般一个Obj对象中的isa会指向普通的Class，这个Class中存储普通成员变量和对 象方法（“-”开头的方法），普通Class中的isa指针指向静态Class，静态Class中存储static类型成员变量和类方法（“+”开头的方 法）。&lt;/p&gt;
 &lt;p&gt;Class super_class:指向父类，如果这个类是根类，则为NULL。&lt;/p&gt;
-&lt;p&gt;下面一张图片很好的描述了类和对象的继承关系：&lt;br&gt;&lt;a href=&quot;http://www.cocos.com/uploads/20141018/1413628797629491.png&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cocos.com/uploads/20141018/1413628797629491.png&lt;/a&gt;&lt;br&gt;注意：所有metaclass中isa指针都指向跟metaclass。而跟metaclass则指向自身。Root metaclass是通过继承Root class产生的。与root class结构体成员一致，也就是前面提到的结构。不同的是Root metaclass的isa指针指向自身。&lt;/p&gt;
+&lt;p&gt;下面一张图片很好的描述了类和对象的继承关系：&lt;br&gt;&lt;img src=&quot;http://www.cocos.com/uploads/20141018/1413628797629491.png&quot; alt=&quot;img&quot;&gt;&lt;br&gt;注意：所有metaclass中isa指针都指向跟metaclass。而跟metaclass则指向自身。Root metaclass是通过继承Root class产生的。与root class结构体成员一致，也就是前面提到的结构。不同的是Root metaclass的isa指针指向自身。&lt;/p&gt;
 &lt;p&gt;Class类中其他的成员这里就先不做过多解释了，下面我们来看看：&lt;/p&gt;
 &lt;p&gt;@selector (makeText)：这是一个SEL方法选择器。SEL其主要作用是快速的通过方法名字（makeText）查找到对应方法的函数指针，然后调用其函 数。SEL其本身是一个Int类型的一个地址，地址中存放着方法的名字。对于一个类中。每一个方法对应着一个SEL。所以iOS类中不能存在2个名称相同 的方法，即使参数类型不同，因为SEL是根据方法名字生成的，相同的方法名称只能对应一个SEL。&lt;/p&gt;
 &lt;p&gt;下面我们就来看看具体消息发送之后是怎么来动态查找对应的方法的。&lt;/p&gt;
