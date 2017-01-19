@@ -86,22 +86,16 @@
 
 
 
-<meta name="description" content="项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
-  是被谁截断了呢？
-  我开">
+<meta name="description" content="2016年匆匆过去了，这一年是自己生命中重要的一年，这一年有两件喜事，入住新房和女儿彤彤出生。这一年中虽然很累，却收获满满。自己在这一年中，不管是生活中还是工作上都犯了很多错误，希望新的一年能够改进，快乐工作生活，努力为家人提供更好生活。  一、生活中需要改进的地方：   1.关于别人的私人事情不参与、不谈论   2.不开别人玩笑，可自黑，不可黑他人   3.多联系和关心家人   4.减少不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx接口数据返回的坑">
-<meta property="og:url" content="http://desehou.me/2016/07/08/nginx接口数据返回的坑/index.html">
+<meta property="og:title" content="2016年度总结">
+<meta property="og:url" content="http://desehou.me/2017/01/19/2016年度总结/index.html">
 <meta property="og:site_name" content="得瑟侯">
-<meta property="og:description" content="项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
-  是被谁截断了呢？
-  我开">
-<meta property="og:updated_time" content="2016-07-08T03:15:41.000Z">
+<meta property="og:description" content="2016年匆匆过去了，这一年是自己生命中重要的一年，这一年有两件喜事，入住新房和女儿彤彤出生。这一年中虽然很累，却收获满满。自己在这一年中，不管是生活中还是工作上都犯了很多错误，希望新的一年能够改进，快乐工作生活，努力为家人提供更好生活。  一、生活中需要改进的地方：   1.关于别人的私人事情不参与、不谈论   2.不开别人玩笑，可自黑，不可黑他人   3.多联系和关心家人   4.减少不">
+<meta property="og:updated_time" content="2017-01-19T07:02:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx接口数据返回的坑">
-<meta name="twitter:description" content="项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
-  是被谁截断了呢？
-  我开">
+<meta name="twitter:title" content="2016年度总结">
+<meta name="twitter:description" content="2016年匆匆过去了，这一年是自己生命中重要的一年，这一年有两件喜事，入住新房和女儿彤彤出生。这一年中虽然很累，却收获满满。自己在这一年中，不管是生活中还是工作上都犯了很多错误，希望新的一年能够改进，快乐工作生活，努力为家人提供更好生活。  一、生活中需要改进的地方：   1.关于别人的私人事情不参与、不谈论   2.不开别人玩笑，可自黑，不可黑他人   3.多联系和关心家人   4.减少不">
 
 
 
@@ -122,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://desehou.me/2016/07/08/nginx接口数据返回的坑/"/>
+  <link rel="canonical" href="http://desehou.me/2017/01/19/2016年度总结/"/>
 
-  <title> nginx接口数据返回的坑 | 得瑟侯 </title>
+  <title> 2016年度总结 | 得瑟侯 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -244,7 +238,7 @@
             
             
               
-                nginx接口数据返回的坑
+                2016年度总结
               
             
           </h1>
@@ -256,8 +250,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T09:36:54+08:00" content="2016-07-08">
-              2016-07-08
+            <time itemprop="dateCreated" datetime="2017-01-19T14:24:57+08:00" content="2017-01-19">
+              2017-01-19
             </time>
           </span>
 
@@ -284,14 +278,7 @@
       
 
       
-        <pre><code>项目开发结束，按照计划上了预演环境，测试部的小伙伴在测试中发现有一个功能返回数据出错，android版本和iOS版本一样。项目上线在即怎么出了这样的问题，我们app开发的小伙伴首先怀疑是服务端接口有问题，服务端小伙伴用浏览器工具调试发现接口正常，并且该接口是post方式，长度应该绝对够用的。经过断点排查发现，返回是有数据的，但是数据是非正常的json格式，被截断了。
-  是被谁截断了呢？
-  我开始怀疑是afnetworking框架截断了，网上查了一通，也没找到原因。偶然在打断点的过程中看到了nginx字样，瞬间怀疑nginx截断了数据。google一下发现大量数据过长被nginx截断的文章。
-  fastcgi_buffers      8 4K;
-  fastcgi_buffer_size  4K;
-</code></pre><p>fastcgi_buffers 控制 nginx 最多创建 8 个大小为 4K 的缓冲区，而 fastcgi_buffer_size 则是处理 Response 时第一个缓冲区的大小，不包含在前者中。所以总计能创建的最大内存缓冲区大小是 8<em>4K+4K = 36k。而这些缓冲区是根据实际的 Response 大小动态生成的，并不是一次性创建的。比如一个 8K 的页面，Nginx 会创建 2</em>4K 共 2 个 buffers。</p>
-<p>当 Response 小于等于 36k 时，所有数据当然全部在内存中处理。如果 Response 大于 36k 呢？fastcgi_temp 的作用就在于此。多出来的数据会被临时写入到文件中，放在这个目录下面。</p>
-<p>内存中缓冲了 36Kb，剩下的会写入的文件中。而实际的情况是，运行 Nginx Process 的用户并没有 fastcgi_temp 目录的写权限，于是剩下的数据就丢失掉了。<br>   所以nginx要给这个目录的读写权限，并且将nginx改为root用户。<br>   重新请求正常。</p>
+        <p>   2016年匆匆过去了，这一年是自己生命中重要的一年，这一年有两件喜事，入住新房和女儿彤彤出生。这一年中虽然很累，却收获满满。自己在这一年中，不管是生活中还是工作上都犯了很多错误，希望新的一年能够改进，快乐工作生活，努力为家人提供更好生活。<br>  一、生活中需要改进的地方：<br>   1.关于别人的私人事情不参与、不谈论<br>   2.不开别人玩笑，可自黑，不可黑他人<br>   3.多联系和关心家人<br>   4.减少不必要的消费<br>   5.加强运动，不过量饮酒<br>   6.尽量不在家里发脾气，如有发生，要第一时间认错<br>   7.控制自己的情绪，不要冲动<br>   8.去旅行<br>  二、工作中需要改进的地方：<br>   1.每天早晨规划当天工作计划，任务优先级<br>   2.保持记录工作日志，一个月更新4次以上blog<br>   3.使用swift开发一个新项目<br>   4.深入研究iOS底层原理，优化项目架构<br>   5.多投入业务时间学习<br>   6.多参与业内活动<br>   7.与同事沟通要换位思考，多顾及别人感受<br>   8.少说多做，为公司和领导解决问题</p>
 
       
     </div>
@@ -317,17 +304,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/07/hexo博客搭建遇到的坑/" rel="next" title="hexo博客搭建遇到的坑">
-                <i class="fa fa-chevron-left"></i> hexo博客搭建遇到的坑
+              <a href="/2016/08/26/iOS-APP-启动原理/" rel="next" title="iOS APP 启动原理">
+                <i class="fa fa-chevron-left"></i> iOS APP 启动原理
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/29/常用的本地保存数据的几种方式/" rel="prev" title="常用的本地保存数据的几种方式">
-                常用的本地保存数据的几种方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
